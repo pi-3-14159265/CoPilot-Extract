@@ -1,0 +1,106 @@
+* { box-sizing: border-box; }
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #eef2ff;
+  background: #0b1020;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(99,102,241,.18), transparent 35%),
+    radial-gradient(circle at 90% 20%, rgba(14,165,233,.12), transparent 30%),
+    #0b1020;
+}
+
+.container { width: min(900px, calc(100% - 32px)); margin: 0 auto; padding: 56px 0 80px; }
+
+header { margin-bottom: 28px; }
+.badge {
+  display: inline-block; padding: 6px 10px; border: 1px solid #293354;
+  border-radius: 999px; color: #a5b4fc; font-size: 11px; font-weight: 700; letter-spacing: .08em;
+}
+h1 { margin: 14px 0 8px; font-size: clamp(32px, 6vw, 52px); letter-spacing: -.04em; }
+header p { color: #a9b2ca; font-size: 17px; margin: 0; }
+
+.card, .results {
+  background: rgba(17, 24, 45, .86);
+  border: 1px solid #293354;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  padding: 22px;
+}
+
+.dropzone {
+  min-height: 300px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border: 2px dashed #3b4670; border-radius: 16px; text-align: center; transition: .2s;
+}
+.dropzone.dragover { border-color: #818cf8; background: rgba(99,102,241,.08); transform: scale(1.005); }
+.upload-icon {
+  width: 58px; height: 58px; display: grid; place-items: center; border-radius: 16px;
+  background: #20294b; color: #a5b4fc; font-size: 30px; margin-bottom: 12px;
+}
+.dropzone h2 { margin: 0 0 4px; }
+.dropzone p { margin: 0 0 14px; color: #8993b0; }
+.dropzone small { display: block; margin-top: 12px; color: #727d9c; }
+
+button {
+  border: 0; border-radius: 10px; padding: 11px 16px; font: inherit; font-weight: 700;
+  cursor: pointer; transition: .15s;
+}
+button:disabled { opacity: .45; cursor: not-allowed; }
+.primary, .convert { background: #6366f1; color: white; }
+.primary:hover, .convert:not(:disabled):hover { background: #7477f5; transform: translateY(-1px); }
+.secondary { background: #20294b; color: #e5e7eb; border: 1px solid #354064; }
+.secondary:hover { background: #293354; }
+
+.options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+.switch-row {
+  display: flex; gap: 12px; align-items: flex-start; padding: 15px;
+  border: 1px solid #293354; border-radius: 12px; background: #11182d;
+  cursor: pointer;
+}
+.switch-row input { margin-top: 3px; accent-color: #6366f1; }
+.switch-row strong { display: block; }
+.switch-row small { display: block; color: #7f89a6; margin-top: 3px; line-height: 1.4; }
+
+.convert { width: 100%; margin-top: 18px; padding: 14px; }
+
+.file-list { margin-top: 18px; display: grid; gap: 8px; }
+.file-item {
+  display: flex; justify-content: space-between; gap: 10px; padding: 10px 12px;
+  background: #0d1428; border: 1px solid #293354; border-radius: 10px; color: #cbd5e1;
+}
+.file-item span:last-child { color: #727d9c; font-size: 13px; }
+.hidden { display: none; }
+
+.results { margin-top: 22px; }
+.results-heading { display: flex; justify-content: space-between; align-items: center; gap: 15px; margin-bottom: 15px; }
+.results h2 { margin: 0; }
+.results-heading p { margin: 4px 0 0; color: #7f89a6; }
+
+.result {
+  border: 1px solid #293354; border-radius: 12px; padding: 15px; margin-top: 10px;
+  background: #0d1428;
+}
+.result-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+.result-name { font-weight: 700; overflow-wrap: anywhere; }
+.result-meta { color: #7f89a6; font-size: 13px; margin-top: 4px; }
+.result-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.preview {
+  white-space: pre-wrap; max-height: 260px; overflow: auto; margin-top: 12px; padding: 12px;
+  border-radius: 9px; background: #080d1b; color: #b9c2d8; font: 13px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.status { min-height: 24px; margin-top: 14px; color: #a9b2ca; }
+.status.error { color: #fca5a5; }
+
+@media (max-width: 650px) {
+  .container { padding-top: 30px; }
+  .options { grid-template-columns: 1fr; }
+  .results-heading, .result-top { align-items: flex-start; flex-direction: column; }
+  .result-actions { width: 100%; }
+  .result-actions button { flex: 1; }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Copilot Transcript Cleaner</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <div class="badge">LOCAL • PRIVATE</div>
+      <h1>Copilot Transcript Cleaner</h1>
+      <p>Turn saved Copilot pages, HTML, TXT, or JSON exports into clean transcripts.</p>
+    </header>
+
+    <section class="card">
+      <div id="dropzone" class="dropzone">
+        <input id="fileInput" type="file" accept=".html,.htm,.txt,.json" multiple hidden>
+        <div class="upload-icon">↑</div>
+        <h2>Drop files here</h2>
+        <p>or</p>
+        <button id="chooseBtn" class="primary">Choose files</button>
+        <small>HTML, HTM, TXT, and JSON</small>
+      </div>
+
+      <div class="options">
+        <label class="switch-row">
+          <input id="plain" type="checkbox">
+          <span>
+            <strong>Plain text</strong>
+            <small>Also remove Markdown formatting from Copilot replies</small>
+          </span>
+        </label>
+        <label class="switch-row">
+          <input id="header" type="checkbox">
+          <span>
+            <strong>Include header</strong>
+            <small>Put the chat name and dates at the top</small>
+          </span>
+        </label>
+      </div>
+
+      <div id="fileList" class="file-list hidden"></div>
+      <button id="convertBtn" class="convert" disabled>Convert files</button>
+    </section>
+
+    <section id="results" class="results hidden">
+      <div class="results-heading">
+        <div>
+          <h2>Results</h2>
+          <p id="summary"></p>
+        </div>
+        <button id="downloadAllBtn" class="secondary">Download all</button>
+      </div>
+      <div id="resultList"></div>
+    </section>
+
+    <div id="status" class="status"></div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
